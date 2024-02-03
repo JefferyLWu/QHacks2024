@@ -6,7 +6,8 @@ public class PlayerInteract : MonoBehaviour
 {
     public GameObject interactText;
     public GameObject interactingObject = null;
-    private bool isInteract;
+    public GameObject eventSystem;
+    public bool canInteract;
 
 
     // Start is called before the first frame update
@@ -19,21 +20,20 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && isInteract == true)
+        if (Input.GetKeyDown(KeyCode.E) && canInteract == true)
         {
-            interactingObject.GetComponent<ObjectInteract>().Interacted();
+            canInteract = false;
+            eventSystem.GetComponent<EventHandler>().Events(interactingObject.GetComponent<ObjectInteract>().eventType, new List<GameObject>{this.gameObject, interactingObject});
+            
         }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (interactingObject == null)
-        {
-            interactText.transform.position = new Vector3(collider.gameObject.GetComponent<ObjectInteract>().interactDistance.x, collider.gameObject.GetComponent<ObjectInteract>().interactDistance.y) + collider.gameObject.transform.position;
-            interactText.SetActive(true);
-            isInteract = true;
-            interactingObject = collider.gameObject;
-        }
+        interactText.transform.position = new Vector3(collider.gameObject.GetComponent<ObjectInteract>().interactDistance.x, collider.gameObject.GetComponent<ObjectInteract>().interactDistance.y) + collider.gameObject.transform.position;
+        interactText.SetActive(true);
+        interactingObject = collider.gameObject;
+        canInteract = true;
 
     }
 
@@ -42,7 +42,7 @@ public class PlayerInteract : MonoBehaviour
         if (interactingObject == collider.gameObject)
         {
             interactText.SetActive(false);
-            isInteract = false;
+            canInteract = false;
             interactingObject = null;
         }
 

@@ -5,21 +5,9 @@ using UnityEngine;
 public class ObjectInteract : MonoBehaviour
 {
     public Vector2 interactDistance;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Interacted()
-    {
-        
-    }
+    public List<string> names;
+    [TextArea(3, 5)]
+    public List<string> text;
+    public int eventType;
 
 }

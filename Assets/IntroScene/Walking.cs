@@ -12,50 +12,68 @@ public class Walking : MonoBehaviour
     public Collider2D leftCollider;
     public Collider2D rightCollider;
 
+    public bool frozen;
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        float horInput = Input.GetAxis("Horizontal");
-        float verInput = Input.GetAxis("Vertical");
-
-        if (verInput > 0)
+        if (!frozen)
         {
-            upCollider.enabled = true;
-            downCollider.enabled = false;
-            leftCollider.enabled = false;
-            rightCollider.enabled = false;
+            float horInput = Input.GetAxis("Horizontal");
+            float verInput = Input.GetAxis("Vertical");
+
+            if (verInput > 0)
+            {
+                upCollider.enabled = true;
+                downCollider.enabled = false;
+                leftCollider.enabled = false;
+                rightCollider.enabled = false;
+            }
+
+            else if (verInput < 0)
+            {
+                upCollider.enabled = false;
+                downCollider.enabled = true;
+                leftCollider.enabled = false;
+                rightCollider.enabled = false;
+            }
+
+            else if (horInput > 0)
+            {
+                upCollider.enabled = false;
+                downCollider.enabled = false;
+                leftCollider.enabled = false;
+                rightCollider.enabled = true;
+            }
+
+            else if (horInput < 0)
+            {
+                upCollider.enabled = false;
+                downCollider.enabled = false;
+                leftCollider.enabled = true;
+                rightCollider.enabled = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                horInput *= sprint;
+                verInput *= sprint;
+            }
+
+            transform.position = transform.position + new Vector3(horInput * speed, verInput * speed, 0);
         }
+        
+    }
 
-        else if (verInput < 0)
-        {
-            upCollider.enabled = false;
-            downCollider.enabled = true;
-            leftCollider.enabled = false;
-            rightCollider.enabled = false;
-        }
+    public void Freeze()
+    {
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        frozen = true;
+    }
 
-        else if (horInput > 0)
-        {
-            upCollider.enabled = false;
-            downCollider.enabled = false;
-            leftCollider.enabled = false;
-            rightCollider.enabled = true;
-        }
-
-        else if (horInput < 0)
-        {
-            upCollider.enabled = false;
-            downCollider.enabled = false;
-            leftCollider.enabled = true;
-            rightCollider.enabled = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift)){
-            horInput *= sprint;
-            verInput *= sprint;
-        }
-
-        transform.position = transform.position + new Vector3(horInput * speed, verInput * speed, 0);
-
+    public void Unfreeze()
+    {
+        gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        frozen = false;
     }
 }
