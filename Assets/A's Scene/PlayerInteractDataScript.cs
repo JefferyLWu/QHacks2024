@@ -71,7 +71,7 @@ public class PlayerInteractDataScript : MonoBehaviour
 
             interactTexts[index].transform.position = new Vector3(collider.gameObject.GetComponent<ObjectInteract>().interactDistance.x, collider.gameObject.GetComponent<ObjectInteract>().interactDistance.y) + collider.gameObject.transform.position;
             interactTexts[index].SetActive(true);
-            interactTexts[index].transform.parent = collider.gameObject.transform;
+            // interactTexts[index].transform.parent = collider.gameObject.transform;
             interactingObject = collider.gameObject;
             canInteract[index] = true;
         }

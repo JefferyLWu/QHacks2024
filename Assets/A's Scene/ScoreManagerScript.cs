@@ -15,9 +15,12 @@ public class ScoreManagerScript : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI timerText;
     float remainingTime = 60f;
+    private bool timerIsActive = true;
 
     private int corrupted = 0;
     private int incomplete = 0;
+
+    public GameObject gamveOverUI;
 
     private void Awake()
     {
@@ -39,13 +42,22 @@ public class ScoreManagerScript : MonoBehaviour
         {
             remainingTime = 0;
             gameOver();
+            timerIsActive = false;
         }
         else
         {
-            remainingTime -= Time.deltaTime;
-            int minutes = Mathf.FloorToInt(remainingTime / 60);
-            int seconds = Mathf.FloorToInt(remainingTime % 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            if (timerIsActive)
+            {
+                remainingTime -= Time.deltaTime;
+                int minutes = Mathf.FloorToInt(remainingTime / 60);
+                int seconds = Mathf.FloorToInt(remainingTime % 60);
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
+            else
+            {
+                timerText.text = "";
+            }
+            
         }
     }
 
@@ -73,6 +85,7 @@ public class ScoreManagerScript : MonoBehaviour
 
     public void finishGame()
     {
+        timerIsActive = false;
         exitObj.SetActive(true);
         DataSpawnerScript3.Instance.dataSpawner.SetActive(false);
         DeleteAllPrefabInstances();
@@ -80,8 +93,10 @@ public class ScoreManagerScript : MonoBehaviour
 
     public void gameOver()
     {
+        timerIsActive = false;
         DataSpawnerScript3.Instance.dataSpawner.SetActive(false); // add
         DeleteAllPrefabInstances();
+        gamveOverUI.SetActive(true);
     }
 
     void DeleteAllPrefabInstances()

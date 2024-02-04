@@ -15,7 +15,7 @@ public class DataSpawnerScript3 : MonoBehaviour
     private bool corruptedDone = false;
     private bool incompleteDone = false;
 
-    public int scoreToWin = 3;
+    public int scoreToWin = 10;
 
     private double timer = 0;
     private double timeToSpawn = 1.1;

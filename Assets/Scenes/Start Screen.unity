@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31, y: 67.13223}
+  m_AnchoredPosition: {x: -31, y: 29.632229}
   m_SizeDelta: {x: 200, y: 38.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91048364
@@ -429,9 +429,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDistance: {x: 0, y: 1}
-  names: []
-  text: []
-  eventType: 0
+  names:
+  - Hello
+  - Testing
+  text:
+  - Is this cool or what?
+  - I think very cool.
+  eventType: 1
 --- !u!1 &174409935
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 208, y: 33.5}
+  m_AnchoredPosition: {x: 208, y: -4}
   m_SizeDelta: {x: 700.3303, y: 132.2859}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &585985937
@@ -803,9 +807,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDistance: {x: 0, y: 1}
-  names: []
-  text: []
-  eventType: 0
+  names:
+  - Name is Name
+  - Name is Name
+  text:
+  - I love some people
+  - But not all
+  eventType: 1
 --- !u!1 &875743583
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +857,7 @@ MonoBehaviour:
   downCollider: {fileID: 875743593}
   leftCollider: {fileID: 875743592}
   rightCollider: {fileID: 875743595}
+  frozen: 0
 --- !u!212 &875743585
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1003,6 +1012,7 @@ MonoBehaviour:
   interactText: {fileID: 1098032311}
   interactingObject: {fileID: 0}
   eventSystem: {fileID: 1982224937}
+  canInteract: 0
 --- !u!61 &875743592
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1369,7 +1379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1364325122
 Transform:
   m_ObjectHideFlags: 0
@@ -1378,16 +1388,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364325121}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 179.5, y: 50, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -515, y: -278.54, z: 0}
+  m_LocalScale: {x: 2.4759, y: 2.4759, z: 2.4759}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1756887780}
   - {fileID: 585985936}
   - {fileID: 91048363}
   - {fileID: 1700614455}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1601294167}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480716123
 GameObject:
@@ -1657,7 +1667,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1364325122}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1699,7 +1710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 193.35, y: 20.5}
+  m_AnchoredPosition: {x: 193.35, y: -17.000004}
   m_SizeDelta: {x: 648.7008, y: 72.764}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700614456
@@ -1827,7 +1838,7 @@ RectTransform:
   m_GameObject: {fileID: 1756887779}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.4125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1364325122}
@@ -1960,7 +1971,7 @@ MonoBehaviour:
   TextUI: {fileID: 1364325121}
   personName: {fileID: 91048364}
   phrase: {fileID: 1700614456}
-  typeSpeed: 0.1
+  typeSpeed: 0.01
 --- !u!114 &1982224942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,4 +1996,3 @@ SceneRoots:
   - {fileID: 174409936}
   - {fileID: 1982224940}
   - {fileID: 1601294167}
-  - {fileID: 1364325122}

@@ -19,7 +19,6 @@ public class TextScript : MonoBehaviour
 
     public void StartTalk(GameObject person, GameObject interactable)
     {
-        Debug.Log("Hi");
         index = 0;
         isInteracting = true;
 

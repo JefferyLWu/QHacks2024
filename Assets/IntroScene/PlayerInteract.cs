@@ -30,6 +30,8 @@ public class PlayerInteract : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log(collider.gameObject.transform.position);
+        Debug.Log(collider.gameObject.GetComponent<ObjectInteract>().interactDistance.x);
         interactText.transform.position = new Vector3(collider.gameObject.GetComponent<ObjectInteract>().interactDistance.x, collider.gameObject.GetComponent<ObjectInteract>().interactDistance.y) + collider.gameObject.transform.position;
         interactText.SetActive(true);
         interactingObject = collider.gameObject;
