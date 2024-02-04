@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7735597660555096919}
   m_Layer: 0
   m_Name: CorruptedDataObject
-  m_TagString: Untagged
+  m_TagString: badData
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9727360cd8709c14b95bdf8312115570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactDistance: {x: 0, y: 0}
+  interactDistance: {x: 0, y: 1}
   names: []
   text: []
   eventType: 0
